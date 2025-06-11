@@ -1,24 +1,19 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import './css/App.css'; // pastikan path-nya sesuai dengan folder css yang baru
 
 function App() {
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4 text-center">HEALTHY MATE - Dashboard</h1>
-
-      <div className="d-flex flex-column align-items-center gap-3">
-        <button className="btn btn-primary btn-lg w-50">
-          Calculator BMI
-        </button>
-
-        <button className="btn btn-success btn-lg w-50">
-          Rekomendasi Kesehatan
-        </button>
-
-        <button className="btn btn-info btn-lg w-50 text-white">
-          Riwayat Kesehatan
-        </button>
-      </div>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

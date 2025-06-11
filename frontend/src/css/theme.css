@@ -1,0 +1,77 @@
+Berikut ini versi **yang sudah diperbarui dari `theme.css` dan `Login.js`** agar tampilannya lebih mirip halaman login Instagram:
+
+---
+
+## ✅ 1. **Revisi `theme.css` (Update tampilan login)**
+
+Tambahkan ini **di bagian bawah file `theme.css`** kamu (boleh juga meng-overwrite jika sudah ada):
+
+```css
+/* ========================= */
+/* LOGIN PAGE (Instagram-like) */
+/* ========================= */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fafafa;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  padding: 40px 40px 20px;
+  width: 350px;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #262626;
+}
+
+.login-form input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 9px 0 7px 8px;
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background-color: #fafafa;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 8px;
+  font-weight: bold;
+  background-color: #3897f0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-form button:hover {
+  background-color: #318ce7;
+}
+
+.forgot-link {
+  display: block;
+  margin-top: 14px;
+  color: #00376b;
+  font-size: 12px;
+  text-decoration: underline;
+}

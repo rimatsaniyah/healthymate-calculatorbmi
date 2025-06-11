@@ -1,29 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const mysql = require('mysql2/promise');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
+
+// Middleware untuk mengizinkan request dari frontend (misalnya React/Vue)
 app.use(cors());
+
+// Middleware untuk parsing request body dalam format JSON
 app.use(express.json());
 
-const dbConfig = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-};
+// Gunakan route untuk autentikasi di bawah prefix /api
+// Contoh endpoint: POST http://localhost:5000/api/login
+app.use("/api", authRoutes);
 
-app.get('/api/testdb', async (req, res) => {
-  try {
-    const conn = await mysql.createConnection(dbConfig);
-    await conn.connect();
-    await conn.end();
-    res.json({ message: 'Database connected!' });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to connect database' });
-  }
+// Jalankan server di port 5000
+app.listen(5000, () => {
+  console.log("✅ Server running on http://localhost:5000");
 });
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
