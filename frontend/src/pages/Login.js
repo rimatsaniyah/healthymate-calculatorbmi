@@ -1,40 +1,41 @@
 // src/pages/Login.js
-
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../css/login.css";
-import backgroundImage from "../assets/foto1.png";
+import backgroundImage from "../assets/foto1.png"; // PENTING: pastikan path dan nama file benar
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
 
-  const handleLogin = async (e) => {
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+      const res = await axios.post("http://localhost:5000/api/login", formData);
 
-      if (res.data.token) {
-        // Simpan token ke localStorage atau sessionStorage jika ingin
+      if (res.data.message === "Login berhasil") {
         localStorage.setItem("token", res.data.token);
-
-        // Redirect ke halaman utama/dashboard
         navigate("/dashboard");
+      } else {
+        setError(res.data.message);
       }
     } catch (err) {
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else {
-        setError("Terjadi kesalahan, silakan coba lagi.");
-      }
+      console.error(err);
+      setError("Terjadi kesalahan saat login");
     }
   };
 
@@ -45,39 +46,33 @@ const Login = () => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        minHeight: "100vh"
       }}
     >
       <div className="login-box">
-        <div className="logo">Healthy Mate !</div>
-        <form className="login-form" onSubmit={handleLogin}>
+        <div className="logo">HealthyMate</div>
+        <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
+            name="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleChange}
             required
           />
-
           <input
             type="password"
-            placeholder="Kata Sandi"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
             required
           />
-
           <button type="submit">Masuk</button>
-
-          {error && (
-            <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
-              {error}
-            </p>
-          )}
         </form>
-
+        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         <p className="signup-link">
-          Belum punya akun? <a href="/signup">Daftar</a>
+          Belum punya akun? <a href="/signup">Daftar sekarang</a>
         </p>
       </div>
     </div>

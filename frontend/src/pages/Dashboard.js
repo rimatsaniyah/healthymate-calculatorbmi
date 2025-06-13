@@ -1,25 +1,34 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+// src/pages/Dashboard.js
 
-function Dashboard() {
-  const location = useLocation();
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../css/Dashboard.css";
+
+const Dashboard = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const query = new URLSearchParams(location.search);
-    if (query.get('login') === 'success') {
-      alert('Selamat anda berhasil Masuk!');
-      
-      // Hapus parameter setelah tampilkan alert
-      navigate('/dashboard', { replace: true });
-    }
-  }, [location, navigate]);
+  const handleLogout = () => {
+    // Hapus token jika ada (opsional)
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="dashboard-page">
+      <div className="dashboard-box">
+        <h2>Selamat Datang di Healthy Mate! 🎉</h2>
+        <p>Silakan pilih fitur yang ingin kamu gunakan:</p>
+
+        <div className="features">
+          <button onClick={() => navigate("/kalori")}>🧮 Kalkulator Kalori</button>
+          <button onClick={() => navigate("/tips")}>📋 Tips Hidup Sehat</button>
+          <button onClick={() => navigate("/jadwal")}>📅 Jadwal Diet Harian</button>
+          <button onClick={() => navigate("/resep")}>🍲 Rekomendasi Resep</button>
+          <button onClick={handleLogout}>🚪 Logout</button>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
