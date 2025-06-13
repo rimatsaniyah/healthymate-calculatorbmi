@@ -1,19 +1,21 @@
-const db = require("../config/db");
+exports.register = (req, res) => {
+  const { nama, email, password } = req.body;
 
-exports.login = (req, res) => {
-  const { email, password } = req.body;
+  // Cek apakah email sudah digunakan
+  const checkEmailSql = "SELECT * FROM users WHERE email = ?";
+  db.query(checkEmailSql, [email], (err, results) => {
+    if (err) return res.status(500).json({ error: "Server error saat cek email" });
 
-  const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-  db.query(sql, [email, password], (err, results) => {
-    if (err) return res.status(500).json({ error: "Server error" });
-
-    if (results.length === 0) {
-      return res.status(401).json({ error: "Email atau password salah" });
+    if (results.length > 0) {
+      return res.status(400).json({ message: "Email sudah terdaftar" });
     }
 
-    return res.status(200).json({
-      message: "Login berhasil",
-      user: results[0],
+    // Simpan user baru
+    const insertUserSql = "INSERT INTO users (nama, email, password) VALUES (?, ?, ?)";
+    db.query(insertUserSql, [nama, email, password], (err, result) => {
+      if (err) return res.status(500).json({ error: "Gagal mendaftarkan pengguna" });
+
+      return res.status(201).json({ message: "Pendaftaran berhasil" });
     });
   });
 };
