@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/Signup.css";
-import backgroundImage from "../assets/foto1.png"; // sama dengan Login.js
+import backgroundImage from "../assets/foto2.png";
 
 const Signup = () => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -23,13 +24,22 @@ const Signup = () => {
       });
 
       if (res.data.message === "Pendaftaran berhasil") {
-        navigate("/login");
+        setSuccess(true);
+        setError("");
       } else {
         setError(res.data.message || "Gagal mendaftar");
       }
     } catch (err) {
-      setError("Terjadi kesalahan saat mendaftar");
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Terjadi kesalahan saat mendaftar");
+      }
     }
+  };
+
+  const handleToLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -40,41 +50,58 @@ const Signup = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <div className="signup-box">
         <div className="logo">Healthy Mate !</div>
-        <form onSubmit={handleSignup} className="signup-form">
-          <input
-            type="text"
-            placeholder="Nama Lengkap"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Kata Sandi"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Daftar</button>
-          {error && (
-            <p style={{ color: "red", fontSize: "12px", marginTop: "8px" }}>{error}</p>
-          )}
-        </form>
-        <div className="divider">ATAU</div>
-        <div className="login-link">
-          Sudah punya akun? <a href="/login">Masuk</a>
-        </div>
+
+        {success ? (
+          <div className="popup-success">
+            <p style={{ color: "green", fontWeight: "bold" }}>
+              ✅ Berhasil Terdaftar Sebagai Member!
+            </p>
+            <button onClick={handleToLogin} className="signup-form-button">
+              Ke Halaman Login
+            </button>
+          </div>
+        ) : (
+          <>
+            <form onSubmit={handleSignup} className="signup-form">
+              <input
+                type="text"
+                placeholder="Nama"
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Kata Sandi"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit">Daftar</button>
+              {error && (
+                <p style={{ color: "red", marginTop: "8px" }}>{error}</p>
+              )}
+            </form>
+            <p style={{ marginTop: "12px" }}>
+              Sudah punya akun? <a href="/login">Masuk</a>
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

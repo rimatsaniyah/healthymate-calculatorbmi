@@ -68,3 +68,22 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+.signup-form-button {
+  width: 80%;
+  max-width: 300px;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form-button:hover {
+  background-color: #43a047;
+}

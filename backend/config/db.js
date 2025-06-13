@@ -1,18 +1,18 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', // default XAMPP tidak pakai password
-  database: 'healthymate' // <- sudah benar
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "", // atau passwordmu
+  database: "healthymate",
 });
 
-connection.connect((err) => {
+db.connect((err) => {
   if (err) {
-    console.error('Koneksi database gagal:', err);
+    console.error("❌ Gagal terhubung ke database:", err);
   } else {
-    console.log('Koneksi database berhasil');
+    console.log("✅ Terhubung ke database");
   }
 });
 
-module.exports = connection;
+module.exports = db;

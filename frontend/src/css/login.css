@@ -6,88 +6,101 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-family: 'Arial', sans-serif;
 }
 
+/* UBAH INI: login-box jadi background putih */
 .login-box {
-  background-color: rgba(205, 202, 202, 0.6); /* transparan abu-abu */
+  background-color: #ffffff; /* putih solid */
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-  max-width: 320px; /* form lebih kecil */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  max-width: 320px;
   width: 100%;
-  color: white;
+  color: #333;
   margin-left: auto;
   margin-right: 10%;
-}
-
-.logo {
-  font-size: 26px;
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 20px;
   text-align: center;
 }
 
+/* Logo */
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+/* Form Login */
 .login-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Input Style */
 .login-form input {
-  padding: 10px;
-  margin-bottom: 12px;
-  border: none;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
+  background-color: #f9f9f9;
+  color: #333;
   font-size: 14px;
+  width: 80%;
+  max-width: 260px;
 }
 
 .login-form input::placeholder {
-  color: #eee;
+  color: #999;
 }
 
+/* Tombol Login */
 .login-form button {
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #2ecc71;
+  background-color: #4caf50;
   color: white;
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
-  margin-top: 10px;
+  width: 80%;
+  max-width: 260px;
+  transition: background-color 0.3s ease;
 }
 
 .login-form button:hover {
-  background-color: #27ae60;
+  background-color: #43a047;
 }
 
+/* Link Lupa Sandi */
 .forgot-link {
   font-size: 13px;
-  color: #ddd;
+  color: #4caf50;
   text-decoration: underline;
   display: block;
   text-align: center;
   margin-top: 10px;
 }
 
+/* Divider */
 .divider {
   margin: 20px 0;
   text-align: center;
   font-size: 13px;
-  color: #ccc;
+  color: #aaa;
 }
 
+/* Link ke Signup */
 .signup-link {
   text-align: center;
   font-size: 13px;
-  color: #ddd;
+  color: #333;
 }
 
 .signup-link a {
-  color: #fff;
+  color: #4caf50;
   font-weight: bold;
   text-decoration: underline;
 }
