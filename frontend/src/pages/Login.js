@@ -1,7 +1,7 @@
 // src/pages/Login.js
 
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/login.css";
 import backgroundImage from "../assets/foto1.png";
@@ -9,25 +9,32 @@ import backgroundImage from "../assets/foto1.png";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
+
     try {
       const res = await axios.post("http://localhost:5000/api/login", {
         email,
         password,
       });
 
-      if (res.data.message === "Login berhasil") {
-        localStorage.setItem("user", JSON.stringify(res.data.user));
+      if (res.data.token) {
+        // Simpan token ke localStorage atau sessionStorage jika ingin
+        localStorage.setItem("token", res.data.token);
+
+        // Redirect ke halaman utama/dashboard
         navigate("/dashboard");
-      } else {
-        setError("Email atau password salah");
       }
     } catch (err) {
-      setError("Terjadi kesalahan, coba lagi");
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Terjadi kesalahan, silakan coba lagi.");
+      }
     }
   };
 
@@ -43,8 +50,7 @@ const Login = () => {
     >
       <div className="login-box">
         <div className="logo">Healthy Mate !</div>
-
-        <form onSubmit={handleLogin} className="login-form">
+        <form className="login-form" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
@@ -52,6 +58,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+
           <input
             type="password"
             placeholder="Kata Sandi"
@@ -59,22 +66,19 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
           <button type="submit">Masuk</button>
 
           {error && (
-            <p style={{ color: "red", fontSize: "12px", marginTop: "8px" }}>{error}</p>
+            <p style={{ color: "red", marginTop: "10px", textAlign: "center" }}>
+              {error}
+            </p>
           )}
         </form>
 
-        <Link className="forgot-link" to="/forgot-password">
-          Lupa kata sandi?
-        </Link>
-
-        <div className="divider">ATAU</div>
-
-        <div className="signup-link">
-          Belum punya akun? <Link to="/signup">Daftar</Link>
-        </div>
+        <p className="signup-link">
+          Belum punya akun? <a href="/signup">Daftar</a>
+        </p>
       </div>
     </div>
   );
