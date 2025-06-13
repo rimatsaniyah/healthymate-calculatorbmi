@@ -3,18 +3,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Dashboard.css";
+import backgroundImage from "../assets/foto4.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Hapus token jika ada (opsional)
     localStorage.removeItem("token");
     navigate("/login");
   };
 
   return (
-    <div className="dashboard-page">
+    <div
+      className="dashboard-page"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        padding: "40px",
+        color: "#fff"
+      }}
+    >
       <div className="dashboard-box">
         <h2>Selamat Datang di Healthy Mate! 🎉</h2>
         <p>Silakan pilih fitur yang ingin kamu gunakan:</p>
