@@ -1,16 +1,3 @@
-Berikut ini versi **yang sudah diperbarui dari `theme.css` dan `Login.js`** agar tampilannya lebih mirip halaman login Instagram:
-
----
-
-## ✅ 1. **Revisi `theme.css` (Update tampilan login)**
-
-Tambahkan ini **di bagian bawah file `theme.css`** kamu (boleh juga meng-overwrite jika sudah ada):
-
-```css
-/* ========================= */
-/* LOGIN PAGE (Instagram-like) */
-/* ========================= */
-
 body {
   margin: 0;
   padding: 0;

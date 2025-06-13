@@ -1,7 +1,10 @@
+// src/pages/Login.js
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/login.css";
+import backgroundImage from "../assets/foto1.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +19,7 @@ const Login = () => {
         email,
         password,
       });
+
       if (res.data.message === "Login berhasil") {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         navigate("/dashboard");
@@ -28,38 +32,43 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-wrapper">
-        <img
-          src="/mockup.png" // ganti dengan gambar HP kalau ada
-          alt="Mockup"
-          className="phone-mockup"
-        />
-        <div className="login-box">
-          <div className="logo">HealthyMate</div>
-          <form onSubmit={handleLogin} className="login-form">
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Kata Sandi"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button type="submit">Masuk</button>
-            {error && <p style={{ color: "red", fontSize: "13px" }}>{error}</p>}
-          </form>
-          <a className="forgot-link" href="#">Lupa kata sandi?</a>
-          <div className="divider">ATAU</div>
-          <div className="signup-link">
-            Belum punya akun? <a href="/signin">Daftar</a>
-          </div>
+    <div
+      className="login-page"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="login-box">
+        <div className="logo">Healthy Mate !</div>
+
+        <form onSubmit={handleLogin} className="login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Kata Sandi"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Masuk</button>
+          {error && (
+            <p style={{ color: "red", fontSize: "12px", marginTop: "8px" }}>{error}</p>
+          )}
+        </form>
+
+        <a className="forgot-link" href="#">Lupa kata sandi?</a>
+        <div className="divider">ATAU</div>
+        <div className="signup-link">
+          Belum punya akun? <a href="/signin">Daftar</a>
         </div>
       </div>
     </div>
