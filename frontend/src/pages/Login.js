@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
-import backgroundImage from "../assets/foto1.png"; // PENTING: pastikan path dan nama file benar
+import backgroundImage from "../assets/foto1.png"; // pastikan path-nya benar
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Login = () => {
       }}
     >
       <div className="login-box">
-        <div className="logo">HealthyMate</div>
+        <div className="logo">Healthy Mate !</div>
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -70,7 +70,16 @@ const Login = () => {
           />
           <button type="submit">Masuk</button>
         </form>
+
+        {/* Tampilkan error jika ada */}
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+
+        {/* Link lupa password */}
+        <p className="forgot-password">
+          <a href="/forgot-password">Lupa password?</a>
+        </p>
+
+        {/* Link ke signup */}
         <p className="signup-link">
           Belum punya akun? <a href="/signup">Daftar sekarang</a>
         </p>

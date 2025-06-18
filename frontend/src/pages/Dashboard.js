@@ -21,16 +21,16 @@ const Dashboard = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
-        padding: "40px",
-        color: "#fff"
+        padding: "40px"
       }}
     >
       <div className="dashboard-box">
-        <h2>Selamat Datang di Healthy Mate! 🎉</h2>
+        <h2>Healthy Mate!</h2>
+        <h3>Teman Diet dan Olahraga-mu</h3>
         <p>Silakan pilih fitur yang ingin kamu gunakan:</p>
 
         <div className="features">
-          <button onClick={() => navigate("/kalori")}>🧮 Kalkulator Kalori</button>
+          <button onClick={() => navigate("/bmi")}>🧮 Kalkulator BMI</button>
           <button onClick={() => navigate("/tips")}>📋 Tips Hidup Sehat</button>
           <button onClick={() => navigate("/jadwal")}>📅 Jadwal Diet Harian</button>
           <button onClick={() => navigate("/resep")}>🍲 Rekomendasi Resep</button>
