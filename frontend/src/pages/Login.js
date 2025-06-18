@@ -3,22 +3,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
-import backgroundImage from "../assets/foto1.png"; // pastikan path-nya benar
+import backgroundImage from "../assets/foto1.png";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: ""
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -26,15 +19,14 @@ const Login = () => {
 
     try {
       const res = await axios.post("http://localhost:5000/api/login", formData);
-
       if (res.data.message === "Login berhasil") {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // simpan nama user
         navigate("/dashboard");
       } else {
         setError(res.data.message);
       }
     } catch (err) {
-      console.error(err);
       setError("Terjadi kesalahan saat login");
     }
   };
@@ -50,7 +42,9 @@ const Login = () => {
       }}
     >
       <div className="login-box">
-        <div className="logo">Healthy Mate !</div>
+        <div className="logo">Healthy Mate</div>
+        <p className="tagline">Teman Diet & Olahragamu</p>
+
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -71,15 +65,11 @@ const Login = () => {
           <button type="submit">Masuk</button>
         </form>
 
-        {/* Tampilkan error jika ada */}
-        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+        {error && <p className="error-msg">{error}</p>}
 
-        {/* Link lupa password */}
         <p className="forgot-password">
           <a href="/forgot-password">Lupa password?</a>
         </p>
-
-        {/* Link ke signup */}
         <p className="signup-link">
           Belum punya akun? <a href="/signup">Daftar sekarang</a>
         </p>

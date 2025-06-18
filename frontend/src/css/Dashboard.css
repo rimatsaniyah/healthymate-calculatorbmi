@@ -52,3 +52,13 @@
   background-color: #43a047;
 }
 
+.dashboard-box h2 {
+  margin-bottom: 10px;
+  color: #2d6a4f;
+  font-size: 22px;
+}
+
+.dashboard-box .highlight {
+  color: #4caf50;
+  font-weight: bold;
+}

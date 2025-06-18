@@ -1,69 +1,97 @@
+/* ===== Global ===== */
 body {
-  background-color: #e0f7f1; /* Tosca muda */
+  background-color: #e0f7f1; /* Tosca/hijau muda */
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Container utama */
+/* ===== Tombol Kembali ===== */
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 10px 18px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
+
+/* ===== Container Utama BMI ===== */
 .bmi-container {
-  padding: 2rem;
   max-width: 600px;
-  margin: 3rem auto;
+  margin: 100px auto 40px auto; /* Jarak dari atas agar tidak menabrak tombol */
+  padding: 30px;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-/* Judul */
+/* ===== Judul dan Paragraf ===== */
 .bmi-container h2 {
-  color: #00897b; /* Tosca tua */
+  color: #4caf50;
   margin-bottom: 10px;
 }
 
-/* Deskripsi */
 .bmi-container p {
   color: #555;
   margin-bottom: 20px;
 }
 
-/* Input & Button */
+/* ===== Form Input ===== */
 .bmi-card input,
-.bmi-card button {
+.bmi-card select {
   display: block;
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
-/* Khusus date input biar tetap rapi */
 .bmi-card input[type="date"] {
   font-family: inherit;
 }
 
-/* Tombol Submit */
+/* ===== Tombol Hitung BMI ===== */
 .bmi-card button {
-  background-color: #4db6ac; /* Hijau muda */
+  background-color: #4caf50;
   color: white;
-  font-weight: bold;
+  padding: 12px 20px;
   border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 .bmi-card button:hover {
-  background-color: #00897b; /* Hijau tosca lebih gelap */
+  background-color: #43a047;
 }
 
-/* Hasil BMI */
+/* ===== Hasil BMI ===== */
 .bmi-result {
   margin-top: 20px;
   padding: 1rem;
   background-color: #f1fdfb;
-  border-left: 5px solid #00897b;
+  border-left: 5px solid #4caf50;
   border-radius: 10px;
   color: #1b4332;
+  font-size: 16px;
 }
