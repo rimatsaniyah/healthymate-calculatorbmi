@@ -1,16 +1,32 @@
-// routes/bmi.js
-
 const express = require("express");
 const router = express.Router();
-const db = require("../config/db"); // file koneksi database
+const db = require("../config/db");
 
-// POST /api/bmi
 router.post("/", (req, res) => {
-  const { weight, height, age, date, bmi, category } = req.body;
+  const {
+    user_id,
+    jenis_kelamin,
+    tinggi,
+    berat,
+    usia,
+    tanggal_timbang,
+    bmi,
+    kategori
+  } = req.body;
 
-  const sql =
-    "INSERT INTO bmi_records (weight, height, age, date, bmi, category) VALUES (?, ?, ?, ?, ?, ?)";
-  const values = [weight, height, age, date, bmi, category];
+  if (
+    !user_id || !jenis_kelamin || !tinggi || !berat ||
+    !usia || !tanggal_timbang || !bmi || !kategori
+  ) {
+    return res.status(400).json({ message: "Semua field wajib diisi" });
+  }
+
+  const sql = `
+    INSERT INTO bmi_history 
+    (user_id, jenis_kelamin, tinggi, berat, usia, tanggal_timbang, bmi, kategori) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  const values = [user_id, jenis_kelamin, tinggi, berat, usia, tanggal_timbang, bmi, kategori];
 
   db.query(sql, values, (err, result) => {
     if (err) {

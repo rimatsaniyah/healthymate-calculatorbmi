@@ -7,11 +7,13 @@ import backgroundImage from "../assets/foto4.png";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [nama, setNama] = useState("");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user) setNama(user.nama);
+    if (user && user.username) {
+      setUsername(user.username);
+    }
   }, []);
 
   const handleLogout = () => {
@@ -32,7 +34,7 @@ const Dashboard = () => {
       }}
     >
       <div className="dashboard-box">
-        <h2>Selamat datang, {nama}!</h2>
+        <h2>Selamat datang, {username}!</h2>
         <p>Pilih fitur yang ingin digunakan:</p>
 
         <div className="features">

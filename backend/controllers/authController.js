@@ -1,14 +1,12 @@
-// controllers/authController.js
-
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Fungsi daftar
 exports.registerUser = async (req, res) => {
-  const { nama, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-  if (!nama || !email || !password) {
+  if (!username || !email || !password) {
     return res.status(400).json({ message: "Semua field wajib diisi" });
   }
 
@@ -23,8 +21,8 @@ exports.registerUser = async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       db.query(
-        "INSERT INTO users (nama, email, password) VALUES (?, ?, ?)",
-        [nama, email, hashedPassword],
+        "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
+        [username, email, hashedPassword],
         (err, result) => {
           if (err) return res.status(500).json({ message: "Gagal mendaftar", error: err });
 
@@ -53,7 +51,7 @@ exports.loginUser = (req, res) => {
     }
 
     const user = results[0];
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password_hash);
 
     if (!isMatch) {
       return res.status(401).json({ message: "Password salah" });
@@ -65,7 +63,7 @@ exports.loginUser = (req, res) => {
 
     res.status(200).json({
       message: "Login berhasil",
-      user: { id: user.id, nama: user.nama, email: user.email },
+      user: { id: user.id, username: user.username, email: user.email },
       token,
     });
   });

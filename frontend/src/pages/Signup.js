@@ -7,7 +7,7 @@ import "../css/Signup.css";
 import backgroundImage from "../assets/foto2.png";
 
 const Signup = () => {
-  const [nama, setNama] = useState("");
+  const [username, setUsername] = useState(""); // ganti dari "nama" jadi "username"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,7 +18,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5000/api/signup", {
-        nama,
+        username,
         email,
         password,
       });
@@ -56,6 +56,11 @@ const Signup = () => {
         alignItems: "center",
       }}
     >
+      {/* ✅ Tombol Back di luar signup-box */}
+      <button className="back-button" onClick={() => navigate("/")}>
+        ← Kembali
+      </button>
+
       <div className="signup-box">
         <div className="logo">Healthy Mate !</div>
 
@@ -73,9 +78,9 @@ const Signup = () => {
             <form onSubmit={handleSignup} className="signup-form">
               <input
                 type="text"
-                placeholder="Nama"
-                value={nama}
-                onChange={(e) => setNama(e.target.value)}
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
               />
               <input
