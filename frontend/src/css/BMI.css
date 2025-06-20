@@ -1,142 +1,111 @@
-/* ===============================
-   Wrapper Utama Halaman BMI
-   =============================== */
-   .bmi-page {
-    background-color: #f4faf5;
-    background-image: linear-gradient(to bottom, #e8f5e9, #ffffff);
-    min-height: 100vh;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    position: relative;
-  }
-  
-  /* Tombol Kembali */
-  .back-button {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    padding: 10px 18px;
-    background-color: #4caf50;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #388e3c;
-    transform: translateY(-1px);
-  }
-  
-  /* ===============================
-     Kotak Utama Kalkulator
-     =============================== */
-  .bmi-box {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 480px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  /* Judul */
-  .bmi-box h2 {
-    color: #388e3c;
-    margin-bottom: 20px;
-  }
-  
-  /* Form Input dan Select */
-  .bmi-box input,
-  .bmi-box select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-  }
-  
-  /* Tombol Hitung */
-  .bmi-box button {
-    width: 100%;
-    padding: 12px;
-    background-color: #43a047;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .bmi-box button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Hasil BMI */
-  .bmi-result {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #2e7d32;
-    background-color: #e8f5e9;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-  
-  /* Tombol Reset */
-  .btn-reset {
-    margin-top: 12px;
-    width: 100%;
-    padding: 10px;
-    background-color: #ffa726;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .btn-reset:hover {
-    background-color: #fb8c00;
-  }
-  
-  /* Link Rekomendasi */
-  .recommendation-link {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 10px 18px;
-    background-color: #81c784;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .recommendation-link:hover {
-    background-color: #66bb6a;
-  }
-  
-  .bmi-box select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-  }
-  
+.bmi-page {
+  background-color: #f4faf5;
+  background-image: linear-gradient(to bottom, #e8f5e9, #ffffff);
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 10px 18px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #388e3c;
+  transform: translateY(-1px);
+}
+
+.bmi-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.bmi-box h2 {
+  color: #388e3c;
+  margin-bottom: 20px;
+}
+
+.bmi-box input,
+.bmi-box select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.form-buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bmi-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #43a047;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bmi-box button:hover {
+  background-color: #388e3c;
+}
+
+.save-button {
+  background-color: #ffa726;
+}
+
+.save-button:hover {
+  background-color: #fb8c00;
+}
+
+.tips-button {
+  background-color: #64b5f6;
+}
+
+.tips-button:hover {
+  background-color: #42a5f5;
+}
+
+.hasil {
+  margin-top: 20px;
+  background-color: #e8f5e9;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.pesan {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

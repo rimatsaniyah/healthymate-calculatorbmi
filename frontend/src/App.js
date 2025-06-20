@@ -33,6 +33,8 @@ import ResepOverweight from "./pages/resep/ResepOverweight";
 import ResepObesitas1 from "./pages/resep/ResepObesitas1";
 import ResepObesitas2 from "./pages/resep/ResepObesitas2";
 
+import Progress from "./pages/Progress";
+
 function App() {
   return (
     <Routes>
@@ -69,6 +71,9 @@ function App() {
       <Route path="/resep/overweight" element={<ResepOverweight />} />
       <Route path="/resep/obesitas1" element={<ResepObesitas1 />} />
       <Route path="/resep/obesitas2" element={<ResepObesitas2 />} />
+      
+      <Route path="/progress" element={<Progress />} />
+      
     </Routes>
   );
 }

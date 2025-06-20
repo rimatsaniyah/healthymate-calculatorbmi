@@ -2,7 +2,7 @@ const db = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Fungsi daftar
+// Register user baru
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -35,7 +35,7 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-// Fungsi login
+// Login user
 exports.loginUser = (req, res) => {
   const { email, password } = req.body;
 
@@ -63,7 +63,11 @@ exports.loginUser = (req, res) => {
 
     res.status(200).json({
       message: "Login berhasil",
-      user: { id: user.id, username: user.username, email: user.email },
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
       token,
     });
   });

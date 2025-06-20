@@ -1,0 +1,58 @@
+.progress-page {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .progress-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 1000px;
+    margin: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-box h2 {
+    color: #388e3c;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .progress-table th,
+  .progress-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .progress-table th {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .progress-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 10px 18px;
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .back-button:hover {
+    background-color: #43a047;
+  }
+  

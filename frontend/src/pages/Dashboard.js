@@ -42,6 +42,7 @@ const Dashboard = () => {
           <button onClick={() => navigate("/tips")}>📋 Tips Hidup Sehat</button>
           <button onClick={() => navigate("/jadwal")}>📅 Jadwal Diet</button>
           <button onClick={() => navigate("/resep")}>🍲 Rekomendasi Resep</button>
+          <button onClick={() => navigate("/progress")}>📊 Progress Diet</button>
           <button onClick={handleLogout}>🚪 Logout</button>
         </div>
       </div>
