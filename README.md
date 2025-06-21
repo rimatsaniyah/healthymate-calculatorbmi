@@ -126,7 +126,8 @@ Pull request terbuka lebar! Jika ingin menyumbang fitur atau memperbaiki bug, si
 
 ---
 
-## 👩‍💻 Pengembang
-
-**Rima Tsaniyah Amilatus Sholihah**  
+## 👩‍💻 **Rima Tsaniyah Amilatus Sholihah**  
 📧 rimatsaniyahas@gmail.com  
+🌐 [LinkedIn](https://www.linkedin.com/in/rima-tsaniyah/)  
+https://www.youtube.com/@rimatsaniyah1864
+
