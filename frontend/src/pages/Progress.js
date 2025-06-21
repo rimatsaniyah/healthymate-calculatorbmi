@@ -1,5 +1,8 @@
+// src/pages/Progress.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
+import "dayjs/locale/id"; // Gunakan bahasa Indonesia untuk format tanggal
 import "../css/Progress.css";
 import backgroundImage from "../assets/foto3.png";
 
@@ -12,7 +15,6 @@ const Progress = () => {
       .then((res) => res.json())
       .then((json) => {
         console.log("Response dari API BMI:", json);
-        // Jika API mengembalikan objek dengan properti `data`, ambil isinya
         if (Array.isArray(json)) {
           setData(json);
         } else if (Array.isArray(json.data)) {
@@ -60,7 +62,7 @@ const Progress = () => {
               {data.map((entry, index) => (
                 <tr key={entry.id}>
                   <td>{index + 1}</td>
-                  <td>{entry.tanggal}</td>
+                  <td>{dayjs(entry.tanggal).locale("id").format("DD MMMM YYYY")}</td>
                   <td>{entry.jenis_kelamin}</td>
                   <td>{entry.tinggi}</td>
                   <td>{entry.berat}</td>
