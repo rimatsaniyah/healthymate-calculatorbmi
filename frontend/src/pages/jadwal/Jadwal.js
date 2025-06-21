@@ -26,7 +26,8 @@ const Jadwal = () => {
       </button>
 
       <div className="jadwal-box">
-        <h2>📅 Jadwal Diet Sesuai Kategori BMI</h2>
+        <h2>📅 Rekomendasi Jadwal Diet</h2>
+        <p style={{ textAlign: "center", marginTop: "20px", color: "#black" }}>Berdasarkan Kategori BMI</p>
         <div className="jadwal-buttons">
           <button onClick={() => navigate("/jadwal/underweight")}>
             Jadwal Diet untuk Berat Badan Sangat Kurang

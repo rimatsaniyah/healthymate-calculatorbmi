@@ -1,40 +1,37 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/Jadwal.css";
-import backgroundImage from "../../assets/foto3.png"; // Pastikan path benar
+import backgroundImage from "../../assets/foto3.png";
 
 const JadwalObesitas1 = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div
-      className="tips-page"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-        padding: "40px 20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Segoe UI, sans-serif",
-      }}
-    >
-      <button className="back-button" onClick={() => navigate("/jadwal")}>
-        ← Kembali
-      </button>
-
-        <div className="jadwal-box">
-        <h2>Jadwal Diet - Obesitas Tingkat I</h2>
+    <div className="tips-page" style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      minHeight: "100vh",
+      padding: "40px 20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      fontFamily: "Segoe UI, sans-serif"
+    }}>
+      <button className="back-button" onClick={() => navigate("/jadwal")}>← Kembali</button>
+      <div className="jadwal-box">
+        <h2>📅 Jadwal Diet - Obesitas I</h2>
+        <p><strong>BMI 30 - 34.9</strong></p>
+        <p>🎯 <strong>Tujuan:</strong> Menurunkan berat badan secara konsisten dan mencegah komplikasi.</p>
         <ul>
-            <li><strong>Pagi:</strong> Telur rebus, roti gandum, teh tanpa gula</li>
-            <li><strong>Snack:</strong> Buah segar (pepaya/melon)</li>
-            <li><strong>Siang:</strong> Nasi merah sedikit, dada ayam kukus, sayur rebus</li>
-            <li><strong>Snack sore:</strong> Kacang almond / edamame rebus</li>
-            <li><strong>Malam:</strong> Salad sayur + tahu rebus, infused water</li>
+          <li><strong>Pagi:</strong> Telur rebus + roti gandum + air lemon</li>
+          <li><strong>Snack:</strong> Buah segar (apel/pear)</li>
+          <li><strong>Siang:</strong> Sup sayur + tempe kukus + nasi merah sedikit</li>
+          <li><strong>Sore:</strong> Yogurt rendah lemak + biji chia</li>
+          <li><strong>Malam:</strong> Tumis sayur + tahu / tempe, buah semangka</li>
         </ul>
-        </div>
+        <p className="note">✨ <strong>Catatan:</strong> Lakukan olahraga ringan minimal 3x seminggu. 🏃‍♂️</p>
+      </div>
     </div>
   );
 };

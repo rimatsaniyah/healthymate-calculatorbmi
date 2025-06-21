@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
-import "dayjs/locale/id"; // Gunakan bahasa Indonesia untuk format tanggal
+import "dayjs/locale/id";
 import "../css/Progress.css";
 import backgroundImage from "../assets/foto3.png";
 
@@ -11,17 +11,26 @@ const Progress = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/bmi")
-      .then((res) => res.json())
+    const userId = localStorage.getItem("user_id");
+
+    if (!userId) {
+      console.error("User ID tidak ditemukan di localStorage.");
+      return;
+    }
+
+    fetch(`http://localhost:5000/api/bmi/${userId}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Gagal mengambil data dari server");
+        }
+        return res.json();
+      })
       .then((json) => {
         console.log("Response dari API BMI:", json);
         if (Array.isArray(json)) {
           setData(json);
-        } else if (Array.isArray(json.data)) {
-          setData(json.data);
         } else {
-          console.error("Data BMI bukan array:", json);
-          setData([]);
+          console.error("Data yang diterima bukan array:", json);
         }
       })
       .catch((err) => console.error("Gagal mengambil data BMI:", err));

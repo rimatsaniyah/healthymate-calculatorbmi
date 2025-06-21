@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../../css/Tips.css";
 import backgroundImage from "../../assets/foto3.png";
 
-const TipsObesitas2 = () => {
-    const navigate = useNavigate(); // ✅ definisikan navigate
+const TipsObesitasII = () => {
+  const navigate = useNavigate();
 
   return (
     <div
@@ -24,18 +24,32 @@ const TipsObesitas2 = () => {
       <button className="back-button" onClick={() => navigate("/tips")}>
         ← Kembali
       </button>
-        <div className="tips-box">
-        <h2>Tips untuk Obesitas Tingkat II</h2>
-        <ul>
-            <li>Penting untuk berkonsultasi dengan tenaga medis atau ahli gizi secara rutin.</li>
-            <li>Ikuti program penurunan berat badan yang terstruktur dan diawasi.</li>
-            <li>Konsumsi makanan dengan gizi seimbang, rendah kalori, tinggi serat.</li>
-            <li>Lakukan aktivitas fisik ringan yang tidak membebani sendi (berenang, yoga).</li>
-            <li>Perhatikan kesehatan mental, hindari stress eating.</li>
-        </ul>
-        </div>
+
+      <div className="tips-box">
+        <h2>📋 Tips Hidup Sehat</h2>
+        <p className="intro">
+          💡 <em>Pahami tubuhmu, sayangi dirimu. Setiap kategori BMI punya pendekatan sehat yang berbeda!</em>
+        </p>
+
+        <hr />
+
+        <p><strong>BMI ≥ 35.0</strong></p>
+
+        <p>🔴 <strong>Tujuan utama:</strong> Mencegah komplikasi serius dan meningkatkan kualitas hidup.</p>
+
+        <p>✅ <strong>Tips Sehat:</strong></p>
+          <p>🥗 Ganti makanan olahan dengan makanan segar alami.</p>
+          <p>🍽 Gunakan piring kecil dan makan perlahan untuk kontrol porsi.</p>
+          <p>🚶‍♂️ Mulai dengan olahraga ringan dan bertahap tingkatkan intensitas.</p>
+          <p>🧘 Latihan relaksasi untuk mengelola stres yang memicu makan emosional.</p>
+          <p>👨‍⚕️ Dapatkan dukungan dari dokter dan komunitas sehat.</p>
+
+        <p className="note">
+          ✨ <strong>Catatan:</strong> Kamu mampu berubah, sedikit demi sedikit. Tidak ada kata terlambat untuk jadi sehat. Semangat! 🌈💖
+        </p>
+      </div>
     </div>
   );
 };
 
-export default TipsObesitas2;
+export default TipsObesitasII;

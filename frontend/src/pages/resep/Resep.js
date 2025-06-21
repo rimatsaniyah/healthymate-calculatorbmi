@@ -26,7 +26,8 @@ const Resep = () => {
       </button>
 
       <div className="resep-box">
-        <h2>🍽️ Rekomendasi Resep Sesuai Kategori BMI</h2>
+        <h2>🍽️ Rekomendasi Resep</h2>
+        <p style={{ textAlign: "center", marginTop: "20px", color: "#black" }}>Berdasarkan Kategori BMI</p>
         <div className="resep-buttons">
           <button onClick={() => navigate("/resep/underweight")}>
             Resep untuk Berat Badan Sangat Kurang

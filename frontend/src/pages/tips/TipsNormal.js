@@ -4,7 +4,7 @@ import "../../css/Tips.css";
 import backgroundImage from "../../assets/foto3.png";
 
 const TipsNormal = () => {
-  const navigate = useNavigate(); // ✅ definisikan navigate
+  const navigate = useNavigate();
 
   return (
     <div
@@ -26,14 +26,29 @@ const TipsNormal = () => {
       </button>
 
       <div className="tips-box">
-        <h2>Tips untuk Berat Badan Normal</h2>
-        <ul>
-          <li>Pertahankan pola makan seimbang: karbohidrat, protein, lemak baik, serat, vitamin.</li>
-          <li>Minum air putih minimal 8 gelas sehari.</li>
-          <li>Rutin berolahraga minimal 30 menit setiap hari.</li>
-          <li>Hindari makanan cepat saji dan tinggi gula berlebihan.</li>
-          <li>Perhatikan kualitas tidur dan manajemen stres.</li>
-        </ul>
+        <h2>📋 Tips Hidup Sehat</h2>
+        <p className="intro">
+          💡 <em>Pahami tubuhmu, sayangi dirimu. Setiap kategori BMI punya pendekatan sehat yang berbeda!</em>
+        </p>
+
+        <hr />
+
+        <p><strong>BMI 18.5 – 24.9</strong></p>
+
+        <p>🟢 <strong>Tujuan utama:</strong> Menjaga berat badan ideal dan kesehatan secara keseluruhan.</p>
+
+        <p>✅ <strong>Tips Sehat:</strong></p>
+          <p>🥗 Konsumsi makanan bergizi seimbang </p>
+            <p>(karbohidrat kompleks, protein tanpa lemak, sayur, buah).</p>
+          <p>🚶‍♀️ Aktif bergerak minimal 30 menit setiap hari </p>
+            <p>(jalan kaki, yoga, bersepeda).</p>
+          <p>💤 Tidur cukup 7–9 jam per malam untuk pemulihan tubuh.</p>
+          <p>🚰 Minum air putih minimal 8 gelas sehari.</p>
+          <p>😊 Kelola stres dengan hobi atau meditasi.</p>
+
+        <p className="note">
+          ✨ <strong>Catatan:</strong> Pertahankan gaya hidup sehat untuk menjaga kebugaran dan mencegah penyakit di masa depan. 🌿💪
+        </p>
       </div>
     </div>
   );

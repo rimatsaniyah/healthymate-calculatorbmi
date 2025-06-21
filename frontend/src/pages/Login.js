@@ -11,7 +11,10 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -19,9 +22,13 @@ const Login = () => {
 
     try {
       const res = await axios.post("http://localhost:5000/api/login", formData);
+
       if (res.data.message === "Login berhasil") {
+        // Simpan token dan data user ke localStorage
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user)); // simpan nama user
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("user_id", res.data.user.id); // ⬅️ Tambahan penting agar Progress.js bisa ambil data
+
         navigate("/dashboard");
       } else {
         setError(res.data.message);
@@ -38,7 +45,7 @@ const Login = () => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "100vh"
+        minHeight: "100vh",
       }}
     >
       <div className="login-box">

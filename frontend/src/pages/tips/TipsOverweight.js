@@ -4,7 +4,7 @@ import "../../css/Tips.css";
 import backgroundImage from "../../assets/foto3.png";
 
 const TipsOverweight = () => {
-    const navigate = useNavigate(); // ✅ definisikan navigate
+  const navigate = useNavigate();
 
   return (
     <div
@@ -25,16 +25,29 @@ const TipsOverweight = () => {
         ← Kembali
       </button>
 
-        <div className="tips-box">
-        <h2>Tips untuk Berat Badan Berlebih</h2>
-        <ul>
-            <li>Kurangi asupan kalori secara bertahap, hindari diet ekstrem.</li>
-            <li>Fokus pada makanan tinggi serat: sayur, buah, gandum utuh.</li>
-            <li>Batasi konsumsi gula, makanan berlemak dan gorengan.</li>
-            <li>Lakukan aktivitas fisik teratur, seperti jalan cepat, bersepeda, atau berenang.</li>
-            <li>Konsultasikan ke dokter atau ahli gizi untuk panduan diet sehat.</li>
-        </ul>
-        </div>
+      <div className="tips-box">
+        <h2>📋 Tips Hidup Sehat</h2>
+        <p className="intro">
+          💡 <em>Pahami tubuhmu, sayangi dirimu. Setiap kategori BMI punya pendekatan sehat yang berbeda!</em>
+        </p>
+
+        <hr />
+
+        <p><strong>BMI 25.0 – 29.9</strong></p>
+
+        <p>🟠 <strong>Tujuan utama:</strong> Menurunkan berat badan secara bertahap dan mencegah obesitas.</p>
+
+        <p>✅ <strong>Tips Sehat:</strong></p>
+          <p>🥦 Perbanyak konsumsi sayuran, buah rendah gula, dan protein tanpa lemak.</p>
+          <p>🍞 Kurangi karbohidrat olahan seperti roti putih dan mie instan.</p>
+          <p>🕐 Terapkan pola makan teratur dan hindari ngemil berlebihan.</p>
+          <p>🏃‍♂️ Lakukan olahraga kardio 3–5 kali seminggu (jogging, zumba).</p>
+          <p>🧠 Tetapkan tujuan realistis dan pantau progres secara berkala.</p>
+
+        <p className="note">
+          ✨ <strong>Catatan:</strong> Perubahan kecil yang konsisten lebih baik daripada diet ekstrem. 💪🍀
+        </p>
+      </div>
     </div>
   );
 };

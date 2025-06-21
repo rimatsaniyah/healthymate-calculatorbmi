@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../../css/Tips.css";
 import backgroundImage from "../../assets/foto3.png";
 
-const TipsObesitas1 = () => {
-    const navigate = useNavigate(); // ✅ definisikan navigate
+const TipsObesitasI = () => {
+  const navigate = useNavigate();
 
   return (
     <div
@@ -23,20 +23,33 @@ const TipsObesitas1 = () => {
     >
       <button className="back-button" onClick={() => navigate("/tips")}>
         ← Kembali
-      </button>  
+      </button>
 
-        <div className="tips-box">
-        <h2>Tips untuk Obesitas Tingkat I</h2>
-        <ul>
-            <li>Mulai dengan memperbaiki pola makan: lebih banyak sayur dan protein rendah lemak.</li>
-            <li>Kurangi porsi makan dan hindari camilan manis/berlemak.</li>
-            <li>Lakukan olahraga ringan secara konsisten (30 menit/hari).</li>
-            <li>Tingkatkan konsumsi air putih dan tidur cukup.</li>
-            <li>Hindari minuman manis dan makanan cepat saji.</li>
-        </ul>
-        </div>
+      <div className="tips-box">
+        <h2>📋 Tips Hidup Sehat</h2>
+        <p className="intro">
+          💡 <em>Pahami tubuhmu, sayangi dirimu. Setiap kategori BMI punya pendekatan sehat yang berbeda!</em>
+        </p>
+
+        <hr />
+
+        <p><strong>BMI 30.0 – 34.9</strong></p>
+
+        <p>🔴 <strong>Tujuan utama:</strong> Menurunkan berat badan secara sehat dan mencegah komplikasi.</p>
+
+        <p>✅ <strong>Tips Sehat:</strong></p>
+          <p>🍽 Kurangi porsi dan perhatikan kualitas makanan.</p>
+          <p>🥗 Fokus pada sayur, buah, dan protein rendah lemak.</p>
+          <p>🚫 Hindari makanan cepat saji dan minuman manis.</p>
+          <p>🧘 Olahraga ringan seperti jalan cepat atau senam low impact.</p>
+          <p>👩‍⚕️ Konsultasi dengan ahli gizi atau dokter untuk pendampingan.</p>
+
+        <p className="note">
+          ✨ <strong>Catatan:</strong> Setiap langkah kecil adalah kemajuan. Kamu berharga dan pantas untuk sehat! ❤️🏃‍♀️
+        </p>
+      </div>
     </div>
   );
 };
 
-export default TipsObesitas1;
+export default TipsObesitasI;

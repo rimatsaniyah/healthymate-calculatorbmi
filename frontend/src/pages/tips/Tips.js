@@ -27,7 +27,7 @@ const Tips = () => {
 
       <div className="tips-box">
         <h2>📋 Tips Hidup Sehat</h2>
-        <h2>Berdasarkan Kategori BMI</h2>
+        <p style={{ textAlign: "center", marginTop: "20px", color: "#black" }}>Berdasarkan Kategori BMI</p>
         <div className="tips-buttons">
           <button onClick={() => navigate("/tips/underweight")}>
             Tips untuk Berat Badan Sangat Kurang

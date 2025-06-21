@@ -4,7 +4,7 @@ import "../../css/Resep.css";
 import backgroundImage from "../../assets/foto3.png";
 
 const ResepObesitas1 = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -25,16 +25,31 @@ const ResepObesitas1 = () => {
         ← Kembali
       </button>
 
-        <div className="resep-box">
-        <h2>🥦 Resep untuk Obesitas Tingkat I</h2>
-        <h4>1. Sup Sayur Rendah Kalori</h4>
-        <ul>
-            <li>Wortel, brokoli, sawi putih, buncis</li>
-            <li>Bumbu: bawang putih, merica, sedikit garam</li>
-            <li>1 sdm minyak zaitun</li>
-        </ul>
-        <p>➡️ Tumis bumbu dengan minyak zaitun, lalu rebus sayur hingga matang. Sajikan hangat.</p>
-        </div>
+      <div className="resep-box">
+        <h2>🍱 Resep untuk Obesitas I</h2>
+        <p className="intro">
+          💡 <em>Fokus pada makanan rendah kalori, tinggi serat, dan tetap bernutrisi.</em>
+        </p>
+        <hr />
+
+        <p><strong>BMI 30 – 34.9</strong></p>
+        <p>🔴 <strong>Tujuan:</strong> Menurunkan berat badan secara konsisten dan mencegah komplikasi kesehatan.</p>
+
+        <p>🥬 <strong>Sup Bening Sayur + Telur Rebus</strong></p>
+        <p>Bahan:</p>
+        <p>- Bayam, wortel, jagung muda, bawang putih</p>
+        <p>- Telur rebus sebagai pelengkap protein</p>
+        <p>💡 Rendah kalori, tinggi vitamin dan mineral.</p>
+
+        <p>🍚 <strong>Nasi Merah + Pepes Ikan</strong></p>
+        <p>Bahan:</p>
+        <p>- Nasi merah, ikan kembung dibumbui dan dikukus</p>
+        <p>💡 Lemak sehat dan rendah kolesterol.</p>
+
+        <p className="note">
+          ✨ <strong>Catatan:</strong> Perhatikan kontrol porsi. Kurangi garam dan perbanyak konsumsi sayur segar.
+        </p>
+      </div>
     </div>
   );
 };
