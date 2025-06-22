@@ -8,13 +8,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Import routes
+// Routes
 const bmiRoutes = require("./routes/bmi");
 const authRoutes = require("./routes/authRoutes");
 
-// Gunakan routes
 app.use("/api/bmi", bmiRoutes);
 app.use("/api", authRoutes);
+
+// Middleware: 404 Not Found
+app.use((req, res) => {
+  res.status(404).json({ message: "Endpoint tidak ditemukan" });
+});
+
+// Middleware: Error Handler (Optional)
+app.use((err, req, res, next) => {
+  console.error("🔥 Unhandled Error:", err);
+  res.status(500).json({ message: "Terjadi kesalahan pada server" });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

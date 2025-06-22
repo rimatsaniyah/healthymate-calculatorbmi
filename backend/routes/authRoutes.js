@@ -1,9 +1,10 @@
+// routes/authRoutes.js
 const express = require("express");
 const router = express.Router();
 const { registerUser, loginUser } = require("../controllers/authController");
 
-// Endpoint Register
-router.post("/register", registerUser);
+// Endpoint Signup
+router.post("/signup", registerUser); // ✅ disamakan dengan frontend
 
 // Endpoint Login
 router.post("/login", loginUser);

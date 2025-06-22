@@ -1,65 +1,72 @@
+// controllers/authController.js
 const db = require("../config/db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Register user baru
-exports.registerUser = async (req, res) => {
+// ---------------- REGISTER ----------------
+exports.registerUser = (req, res) => {
   const { username, email, password } = req.body;
+
+  console.log("📥 Data masuk ke register:", req.body);
 
   if (!username || !email || !password) {
     return res.status(400).json({ message: "Semua field wajib diisi" });
   }
 
-  try {
-    db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
-      if (err) return res.status(500).json({ message: "Database error", error: err });
+  const checkSql = "SELECT * FROM users WHERE email = ?";
+  db.query(checkSql, [email], (checkErr, checkResults) => {
+    if (checkErr) {
+      console.error("❌ Gagal mengecek email:", checkErr);
+      return res.status(500).json({ message: "Terjadi kesalahan pada server" });
+    }
 
-      if (results.length > 0) {
-        return res.status(400).json({ message: "Email sudah terdaftar" });
+    if (checkResults.length > 0) {
+      return res.status(409).json({ message: "Email sudah terdaftar" });
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    const insertSql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
+    db.query(insertSql, [username, email, hashedPassword], (insertErr, result) => {
+      if (insertErr) {
+        console.error("❌ Gagal menyimpan user:", insertErr);
+        return res.status(500).json({ message: "Gagal mendaftarkan akun" });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      db.query(
-        "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
-        [username, email, hashedPassword],
-        (err, result) => {
-          if (err) return res.status(500).json({ message: "Gagal mendaftar", error: err });
-
-          res.status(201).json({ message: "Pendaftaran berhasil" });
-        }
-      );
+      res.status(201).json({ message: "✅ Registrasi berhasil" });
     });
-  } catch (error) {
-    res.status(500).json({ message: "Terjadi kesalahan server", error });
-  }
+  });
 };
 
-// Login user
+// ---------------- LOGIN ----------------
 exports.loginUser = (req, res) => {
   const { email, password } = req.body;
 
+  console.log("📥 Data masuk ke login:", req.body);
+
   if (!email || !password) {
-    return res.status(400).json({ message: "Email dan password wajib diisi" });
+    return res.status(400).json({ message: "Email dan password tidak boleh kosong" });
   }
 
-  db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
-    if (err) return res.status(500).json({ message: "Database error", error: err });
+  const sql = "SELECT * FROM users WHERE email = ?";
+  db.query(sql, [email], (err, results) => {
+    if (err) {
+      console.error("❌ Gagal mengambil data user:", err);
+      return res.status(500).json({ message: "Terjadi kesalahan pada server" });
+    }
 
     if (results.length === 0) {
-      return res.status(401).json({ message: "Email tidak ditemukan" });
+      return res.status(401).json({ message: "Email atau password salah" });
     }
 
     const user = results[0];
-    const isMatch = await bcrypt.compare(password, user.password_hash);
+    const isPasswordValid = bcrypt.compareSync(password, user.password_hash);
 
-    if (!isMatch) {
-      return res.status(401).json({ message: "Password salah" });
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Email atau password salah" });
     }
 
-    const token = jwt.sign({ id: user.id, email: user.email }, "rahasia", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ id: user.id, email: user.email }, "RAHASIA", { expiresIn: "1h" });
 
     res.status(200).json({
       message: "Login berhasil",
