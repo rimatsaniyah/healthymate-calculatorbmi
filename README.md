@@ -129,5 +129,5 @@ Pull request terbuka lebar! Jika ingin menyumbang fitur atau memperbaiki bug, si
 ## 👩‍💻 **Rima Tsaniyah Amilatus Sholihah**  
 📧 rimatsaniyahas@gmail.com  
 🌐 [LinkedIn](https://www.linkedin.com/in/rima-tsaniyah/)  
-https://www.youtube.com/@rimatsaniyah1864
+Video demo youtube: https://youtu.be/63lJfK07IRI?si=jrKYXlKCzCVVqjIH 
 
